@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommendation</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <style>
+            div.imageslide{
+                margin: 5px;
+                border: 3px solid #ccc;
+                float: left;
+                width: 180px;
+                height:auto;
+                }
+            
+            div.imageslide img{
+                width:100%;
+                height:auto;
+               
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        
+                <h1>MOVIE RECOMMENDATION</h1>
+                <div class="slide">
+                    <div class="carousel" data-flickity='{ "wrapAround": false, "autoPlay": true, "imagesLoaded":true }'>
+                        {% for imagename in image_names %}
+                        <div class = "imageslide">
+                            
+                                
+                                    <img src = "{{ url_for('send_image', filename=imagename)}}">
+                                
+                            
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <form action="/result" method="POST" class="form">
+                    <div class='moviename'>
+                    <input class="form-input" type="text" name="Movie Name" placeholder="Movie Name"><br>
+                    </div>
+                    <div class='button'>
+                    <button type="submit" id="submit" onclick = "GFG_Fun()">Submit</button>
+                    </div>              
+                    
+                </form>
+                <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+            
+        
+        
+
+    </body>
+
+
+
+
+</html>
